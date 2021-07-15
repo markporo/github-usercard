@@ -105,7 +105,7 @@ function createGitHubCard({ avatar_url, name, login, location, html_url, followe
 
   // add classes or styles or src's
   card.classList.add("card");
-  img.style.src = avatar_url;
+  img.src = avatar_url;
   cardInfo.classList.add("card-info");
   realName.classList.add("name");
   userName.classList.add("userName");
