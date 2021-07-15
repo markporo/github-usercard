@@ -33,6 +33,8 @@ const fetchGitHubCardData = function (arrUserName) {
 };
 
 
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -135,6 +137,19 @@ function createGitHubCard({ avatar_url, name, login, location, html_url, followe
 */
 
 fetchGitHubCardData(followersArray);
+
+const inputGitHubNameValue = document.getElementById("githubName");
+
+const getGitHubName = (e) => {
+  e.preventDefault();
+  // Selecting the input element and get its value 
+  followersArray.push(inputGitHubNameValue.value);
+  console.log(inputGitHubNameValue);
+  console.log(followersArray);
+}
+
+const getGithubFollowersButton = document.querySelector("button");
+getGithubFollowersButton.addEventListener("click", getGitHubName());
 
 
 /*
