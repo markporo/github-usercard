@@ -12,7 +12,7 @@ const fetchGitHubCardData = function (arrUserName) {
 
     axios.get('https://api.github.com/users/' + user)
       .then(function (res) {
-        console.log(res.data);
+        //console.log(res.data);
         const usersInfoObj = res.data;
         // handle success
         const usersCard = createGitHubCard(usersInfoObj);
@@ -31,6 +31,8 @@ const fetchGitHubCardData = function (arrUserName) {
     // });
   })
 };
+
+
 
 
 /*
@@ -105,7 +107,7 @@ function createGitHubCard({ avatar_url, name, login, location, html_url, followe
 
   // add classes or styles or src's
   card.classList.add("card");
-  img.style.src = avatar_url;
+  img.src = avatar_url;
   cardInfo.classList.add("card-info");
   realName.classList.add("name");
   userName.classList.add("userName");
@@ -134,7 +136,22 @@ function createGitHubCard({ avatar_url, name, login, location, html_url, followe
     user, and adding that card to the DOM.
 */
 
-fetchGitHubCardData(followersArray);
+
+
+let inputGitHubNameValue = document.getElementById("githubName");
+
+const getGitHubName = (e) => {
+  e.preventDefault();
+  // Selecting the input element and get its value 
+  followersArray.push(inputGitHubNameValue.value);
+  console.log(inputGitHubNameValue.value);
+  console.log(followersArray);
+  fetchGitHubCardData(followersArray);
+  inputGitHubNameValue.value = "";
+}
+
+const getGithubFollowersButton = document.querySelector("button");
+getGithubFollowersButton.addEventListener("click", getGitHubName);
 
 
 /*
